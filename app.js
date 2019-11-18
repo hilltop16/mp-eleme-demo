@@ -6,10 +6,7 @@ App({
       wx.getUserInfo,
       wx.requestPayment)
 
-    wx.BaaS.init('6aa7adace90e5f09a004')
-
-    // wx.BaaS.auth.register({ username: 'ifanrx', password: 'ifanrx123' }).then(user => {
-    //   console.log(user)
-    // })
+    let clientID = 'xxxx'
+    wx.BaaS.init(clientID)
   },
 })
