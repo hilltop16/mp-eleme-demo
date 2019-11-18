@@ -1,0 +1,31 @@
+<!--pages/show/show.wxml-->
+<view>
+  <view>{{ restaurant.name }}</view>
+  <view>{{ restaurant.description }}</view>
+  <view class="switch">
+    <view>【本餐厅菜单】</view>
+    <view wx:for="{{ meals }}" wx:for-item="meal" wx:key="meal.id">
+      <!-- <image src="{{ meal.photo }}"></image> -->
+      <view>菜名：{{ meal.name }}</view>
+      <view>价格：￥{{ meal.price }}.00</view>
+      <button bindtap='onSubmitOrder' data-id="{{ meal.id }}">下单</button>
+    </view>
+  </view>
+  <view class="switch">
+    <view>【餐厅评论】</view>
+    <view wx:for="{{ reviews }}" wx:for-item="review" wx:key="review.id">
+      <text>{{ review.content }}</text>
+    </view>
+
+    <view>添加评论：</view>
+    <form bindsubmit="onSubmitReview">
+      <input name="content" placeholder="请输入评论内容"></input>
+      <picker mode="selector"
+        range="{{ ratingValues }}"
+        bindchange="onChangeRating">
+          选择评分 {{ rating }}
+      </picker>
+      <button form-type='submit'>发布评论</button>
+    </form>
+  </view>
+</view>
